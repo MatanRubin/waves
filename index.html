@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Der Commands</title>
+
+    <script language="JavaScript">
+
+        let currentDate = new Date()
+
+        function later() {
+            currentDate.setHours(currentDate.getHours() + 3);
+            updateImageSource()
+        }
+
+        function earlier() {
+            currentDate.setHours(currentDate.getHours() - 3);
+            updateImageSource()
+        }
+
+        function getClosestThreeHourTime(hours) {
+            return 3 * Math.floor(hours / 3);
+        }
+
+        function calcImageName() {
+            let year = currentDate.getYear() - 100;
+            let month = currentDate.getMonth() + 1;
+            let day = currentDate.getDate();
+            let hour = getClosestThreeHourTime(currentDate.getHours());
+
+            if (month < 10) {
+                month = `0${month}`
+            }
+            if (day < 10) {
+                day = `0${day}`
+            }
+            if (hour < 10) {
+                hour = `0${hour}`
+            }
+            return `${year}${month}${day}${hour}`;
+        }
+
+        function updateImageSource() {
+            let imageName = calcImageName();
+            let imageSrc = `https://isramar.ocean.org.il/isramar2009/wave_model/wave_maps/swan/1809101200/israel/${imageName}.wavedir.gif`
+            document.getElementById("wavesImage").src = imageSrc
+
+        }
+
+        function onLoad() {
+            let imageName = calcImageName(0);
+            updateImageSource(imageName)
+        }
+    </script>
+
+</head>
+<body onload="onLoad()">
+<!--
+User:<input id="txtUsername" />Password<input id="txtPassword" type="password" />
+<button onclick="selectUtility()">Login</button>
+-->
+<img id="wavesImage">
+<button onclick="earlier()">Previous</button>
+<button onclick="later()">Next</button>
+</body>
+</html>
