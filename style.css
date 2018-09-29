@@ -1,0 +1,45 @@
+body, html, .container{
+  height: 100%;
+}
+
+body{
+  background: #fff;
+  font-size: 13px;
+}
+
+.map-container{
+  height: calc(100% - 110px);
+  text-align: center;
+  padding: 20px;
+  min-height: 370px;
+}
+
+.map-container img{
+  height: 100%;
+}
+
+.buttons-container{
+  justify-content: center!important;
+  width: 50%;
+  margin: auto;
+}
+
+.buttons-container > label{
+  margin: 0 20px;
+  text-align: center;
+}
+
+.buttons-container button{
+  width: 30%;
+  font-size: 12px!important;
+}
+
+.copyright{
+  text-align: center;
+}
+
+@media (max-width: 800px){
+  .map-container, .map-container img, .buttons-container{
+    width: 100%;
+  }
+}
